@@ -1,0 +1,27 @@
+function [mfcc39_stack, speaker_id_stack, prompt_stack] = ta_stack_mfcc39_and_speaker_id(self)
+%% we need to unwrap the data (flatten the data structure) so it can be used to train the SOM
+
+speaker_id_cell= cell(self.ta_length(), 1);
+% create cells for the speaker id matching the length of the mfcc39 data
+for speaker_index = 1:self.ta_length()
+    current_speaker_id = self.speaker_id(speaker_index);
+    speaker_id_cell{speaker_index} = repmat(current_speaker_id, height(self.mfcc39{speaker_index}.mfcc39), 1);
+end
+
+% [mfcc39_stack, speaker_id_stack, prompt_stack] = self.ta_stack_mfcc39('mfcc39');
+
+
+mfcc39_stack = self.ta_stack_mfcc39('mfcc39');
+
+
+
+
+
+output_table = table();
+for index = 1:length(self.mfcc39)
+    output_table = [output_table; [[self.mfcc39{index}.mfcc39], cellstr(self.mfcc39{index}.speaker_id), cellstr(self.mfcc39{index}.prompt)]];
+end
+
+output_table.Properties.VariableNames = {'mfcc39_data', 'speaker_id', 'prompt'};
+
+end

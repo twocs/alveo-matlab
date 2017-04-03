@@ -1,0 +1,3 @@
+%% we only need to add this folder, because we have included everything needed here...
+
+% addpath(genpath('D:\programming\MATLAB\home\HTK_MFCC_MATLAB\mfcc'));

@@ -1,0 +1,7 @@
+function [ output_args ] = ta_write_latex_document( input_args )
+%TA_WRITE_LATEX_DOCUMENT Summary of this function goes here
+%   Detailed explanation goes here
+
+
+end
+
